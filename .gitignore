@@ -1,2 +1,4 @@
 .venv
 .vscode
+aws.pem
+aws.pem.pub

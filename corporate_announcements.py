@@ -26,7 +26,7 @@ mainline_stocks_announcements = announcements_for_equities()
 sme_stock_announcements = announcements_for_sme()
 
 # Concat both the result of mainline stocks and sme stocks
-stock_announcements = mainline_stocks_announcements #+ sme_stock_announcements
+stock_announcements = mainline_stocks_announcements + sme_stock_announcements
 
 # Filter only event related announcements
 eventProcessor = EventProcessor()
