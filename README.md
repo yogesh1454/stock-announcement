@@ -24,7 +24,12 @@ python3 -m pip install --upgrade pip
 python3 -m pip --version
 
 # PIP Install Depended Modules
+>pip install -r requirements.txt -t .
 >pip install -r requirements.txt
 
 # Run Python script
->python3 corporate_announcements.py
+
+>python3 corporate_announcements.py <telegram_chat_id>
+
+# Window Activate a virtual environment
+
