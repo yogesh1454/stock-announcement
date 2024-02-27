@@ -7,7 +7,8 @@ Go to your project’s directory and run the following command. This will create
 ## Activate a virtual environment
 Before you can start installing or using packages in your virtual environment you’ll need to activate it. Activating a virtual environment will put the virtual environment-specific python and pip executables into your shell’s PATH.
 
->source .venv/bin/activate
+>Mac: source .venv/bin/activate
+> Window: source .venv/Scripts/activate
 
 ## Verify
 To confirm the virtual environment is activated, check the location of your Python interpreter:
@@ -29,7 +30,8 @@ python3 -m pip --version
 
 # Run Python script
 
->python3 corporate_announcements.py <telegram_chat_id>
+full_memory_file_path ='/d/ws/stock-announcement/data/memory-stock-events.txt'
+>python3 corporate_announcements.py <telegram_chat_id> <full_memory_file_path>
 
 # Window Activate a virtual environment
 

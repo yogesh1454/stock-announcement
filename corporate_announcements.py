@@ -4,6 +4,7 @@ from event_processor import EventProcessor
 import pprint
 import telegram as tele
 import sys
+from memory import Memory
 
 
 
@@ -25,12 +26,13 @@ def announcements_for_sme():
     return response
 
 
-if len(sys.argv) != 2:
+if len(sys.argv) != 3:
     print('Invalid arguments; require 1 command line arguments chatId to send msg to telegram', sys.argv)
     exit()
 
 chatId = sys.argv[1]
-print(chatId)
+fileName = sys.argv[2]
+memory = Memory(fileName)
 
 mainline_stocks_announcements = announcements_for_equities()
 sme_stock_announcements = announcements_for_sme()
@@ -43,7 +45,9 @@ eventProcessor = EventProcessor()
 events=[]
 for announcement in stock_announcements:
     if eventProcessor.apply(announcement):
-        events.append(announcement)
+        if memory.isPresentInMemory(announcement['sm_name']) == False:
+            events.append(announcement)
+            memory.addToMemory(announcement['sm_name'])
 
 # events = filter(lambda x: eventProcessor.apply(x), stock_announcements)
 print('Total filtered events', len(events))
@@ -60,3 +64,4 @@ for event in events:
 
 #print('Total filtered events', events)
 pp.pprint(events)
+memory.saveMemory()
