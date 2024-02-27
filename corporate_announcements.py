@@ -23,12 +23,12 @@ def announcements_for_sme():
     return response
 
 
-if len(sys.argv) != 3:
+if len(sys.argv) != 2:
     print('Invalid arguments; require 1 command line arguments chatId to send msg to telegram', sys.argv)
     exit()
 
 chatId = sys.argv[1]
-fileName = sys.argv[2]
+fileName = 'data/memory-stock-events.txt'
 
 try:   
     memory = Memory(fileName)
@@ -67,6 +67,6 @@ try:
 
 except Exception as e:
     error_message = e.args[0]
-    print('######',error_message)
+    print('######',error_message, e)
     # Send the message to Telegram
-    tele.send_telegram_message(chatId, '<h2>Stock Announcement Script error<h2>\n'+error_message, parse_mode='HTML')
+    tele.send_telegram_message(chatId, '<h2>Stock Announcement Script error<h2>\n', parse_mode='HTML')
